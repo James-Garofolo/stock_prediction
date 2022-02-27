@@ -45,7 +45,7 @@ def make_white_lister(ticker, input_size, *layer_sizes):
 
     hidden_layers = []
     for ls in layer_sizes:
-        hidden_layers.append(tf.keras.layers.Dense(ls, activation ='relu'))
+        hidden_layers.append(tf.keras.layers.Dense(ls, activation ='tanh'))
 
     white_lister = tf.keras.models.Sequential([
         tf.keras.layers.Dense(input_size, activation='relu')] +
