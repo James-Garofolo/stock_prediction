@@ -18,9 +18,19 @@ def package(windows, sizes):
     features = []
     for a in range(len(sizes)):
         window = windows[a]
-        features += window[len(window)-sizes[a]:len(window)]
+        features.extend(window[len(window)-sizes[a]:len(window)])
 
     features = np.array(features)
+    return features
+
+def pre_process(in_data, dsize, fftsize, ddtsize):
+    r_fft, i_fft = do_fft(in_data)
+    ddt = derivative(in_data)
+    avg = [np.average(in_data)]
+    st_dev = [np.std(in_data)]
+    features = package([in_data, r_fft, i_fft, ddt, avg, st_dev],
+                        [dsize, fftsize, fftsize, ddtsize, 1, 1])
+
     return features
 
 
