@@ -6,6 +6,7 @@ import datetime as dt
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import matplotlib.pyplot as plt
+from pre_processors import *
 
 def make_white_lister(ticker, input_size, *layer_sizes):
     """
