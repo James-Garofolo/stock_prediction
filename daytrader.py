@@ -19,8 +19,16 @@ trend = data[0]['Open'].to_numpy()
 for d in data[1:]:
     d = d['Open'].to_numpy()
     trend = np.hstack((trend, d))
+print("dataframe\n\n", data)
 
-print(data, "\n np array \n", trend)
+window = np.array(trend[0: 60])
+#need to make 60 minute arrays with 1 minute intervals between
+for i in range(1,len(trend)- 60):
+    window = np.vstack((window, trend[i:i + 60]))
+   
+print("array\n\n", window)
+    
+
 
 
 
