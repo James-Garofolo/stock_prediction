@@ -43,7 +43,7 @@ train_window, test_window, train_label, test_label = train_test_split(window, la
 
 #neural network structure
 daytrader = tf.keras.models.Sequential([
-    tf.keras.layers.Dense(60, activation = 'relu'),
+    tf.keras.layers.Dense(200, activation = 'relu'),
     tf.keras.layers.Dense( 100, activation = 'relu'),
     tf.keras.layers.Dense(50, activation = 'relu'),
     tf.keras.layers.Dense(2)
