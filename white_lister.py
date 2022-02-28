@@ -63,13 +63,13 @@ def make_white_lister(ticker, deadgap, d_size=5, ddt_size=20, input_size=50, lay
         hidden_layers + 
         [tf.keras.layers.Dense(3)])
 
-    opt = tf.keras.optimizers.Adam(learning_rate=0.0005)
+    opt = tf.keras.optimizers.Adam(learning_rate=0.0001)
     white_lister.compile(optimizer=opt,
                         loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                         metrics=['accuracy'])
 
     print("\n\n")
-    history = white_lister.fit(train_windows, train_labels, epochs=50, verbose=0)
+    history = white_lister.fit(train_windows, train_labels, epochs=20, verbose=0)
 
     test_loss, test_acc = white_lister.evaluate(test_windows, test_labels, verbose=2)
 
@@ -78,7 +78,7 @@ def make_white_lister(ticker, deadgap, d_size=5, ddt_size=20, input_size=50, lay
 
 
 if __name__ == "__main__":
-    white_lister, history, test_acc = make_white_lister("GOOG", 0.015)
+    white_lister, history, test_acc = make_white_lister("F", 0.02)
 
     plt.plot(history.history['accuracy'])
     plt.plot(history.history['loss'])
